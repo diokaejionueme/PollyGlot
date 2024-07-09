@@ -26,27 +26,46 @@
             
             <!---Body Section-->
             <div class="body">
-                <div class="desc-text">
-                    <p>Text to translate 👇</p>
-                </div>
-                    <div class="textarea-container">
-                        <textarea name="input" id="input" placeholder="How are you"></textarea>
-                    </div>
+                <div id="front">
                     <div class="desc-text">
-                        <p>Select Language 👇</p>
+                        <p>Text to translate 👇</p>
                     </div>
-                    /<div class="options">
-                        <input type="radio" name="language" id="french" value="French">
-                        <label for="french">French  </label><br>
-                        <input type="radio" name="language" id="spanish" value="Spanish">
-                        <label for="spanish">Spanish</label><br>
-                        <input type="radio" name="language" id="japanese" value="Japanese">
-                        <label for="japanese">Japanese</label><br>
-                    </div>
-                    <div id= "btn-wrapper">
-                        <button type="button" name="translate" id="translate-btn">Translate</button>
-                    </div>
-                
+                        <div class="textarea-container">
+                            <textarea name="input" id="input" placeholder="How are you"></textarea>
+                        </div>
+                        <div class="desc-text">
+                            <p>Select Language 👇</p>
+                        </div>
+                        <div class="options">
+                            <input type="radio" name="language" id="french" value="French">
+                            <label for="french">French  </label><br>
+                            <input type="radio" name="language" id="spanish" value="Spanish">
+                            <label for="spanish">Spanish</label><br>
+                            <input type="radio" name="language" id="japanese" value="Japanese">
+                            <label for="japanese">Japanese</label><br>
+                        </div>
+                        <div id= "btn-wrapper">
+                            <button type="button" name="translate" id="translate-btn" >Translate</button>
+                        </div>
+                </div>
+                <div id="back" style="display: none">
+                        <div class="desc-text">
+                            <p>Original Text 👇</p>
+                        </div>
+                            <div class="textarea-container">
+                                <textarea name="input" id="input" placeholder="How are you"></textarea>
+                            </div>
+                            <div class="desc-text">
+                                <p>Your translation 👇</p>
+                            </div>
+                            <div class="textarea-container">
+                                <textarea name="output" id="output" placeholder="I am fine"></textarea>
+                            </div>
+                            <div id= "btn-wrapper">
+                                <button type="button" name="startover" id="startover-btn">Start over</button>
+                            </div>
+                            
+                </div>                
 
             </div>
 
