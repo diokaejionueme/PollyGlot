@@ -8,7 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "openai": "^4.52.7",
     "vite": "latest"
-  },
-  "devDependencies": {}
+  }
 }

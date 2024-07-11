@@ -24,6 +24,8 @@ async function flip() {
     const frenchCode   = document.getElementById('french')
     const japaneseCode = document.getElementById('japanese')
     const outPutText   = document.getElementById('output')
+    const textToTranslate = document.getElementById('input2')
+
 
     if(spanishCode.checked){
         const messages = [
@@ -65,7 +67,7 @@ function reset()
 
     front.style.display = "block"
     back.style.display  = "none"
-}
+} 
 
 
 

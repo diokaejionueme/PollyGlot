@@ -133,6 +133,15 @@ a {
 
 }
 
+#input2{
+  background-color: #eff0f4;
+  color: #333333;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+
+}
+
 .options{
   margin: 0 auto;
   width: 30vw;
