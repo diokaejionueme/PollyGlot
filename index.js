@@ -47,10 +47,43 @@ async function flip() {
         outPutText.value = response.choices[0].message.content
     }
     else if (frenchCode.checked){
-        console.log('French Selected');
+
+        const messages = [
+            {
+                role: 'system',
+                content: `You're a proficient language translator. You are to take the incoming text and translate it to french`
+            },
+            {
+                role: 'user',
+                content: `${originalText}`
+            }
+        ]
+
+        const response = await openai.chat.completions.create({
+            model: 'gpt-4o', 
+            messages: messages
+        })
+
+        outPutText.value = response.choices[0].message.content
     }
     else if (japaneseCode.checked){
-        console.log('Japanese Selected');
+        const messages = [
+            {
+                role: 'system',
+                content: `You're a proficient language translator. You are to take the incoming text and translate it to japanese`
+            },
+            {
+                role: 'user',
+                content: `${originalText}`
+            }
+        ]
+
+        const response = await openai.chat.completions.create({
+            model: 'gpt-4o', 
+            messages: messages
+        })
+
+        outPutText.value = response.choices[0].message.content
     }
 
     document.getElementById('input2').value = originalText;
@@ -66,6 +99,8 @@ function reset()
     const back = document.getElementById("back");
 
     front.style.display = "block"
+     document.getElementById('input').value = "";
+
     back.style.display  = "none"
 } 
 
