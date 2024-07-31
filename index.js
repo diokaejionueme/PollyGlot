@@ -1,4 +1,3 @@
-import OpenAI from "openai"
 
 const translate = document.getElementById('translate-btn')
 const startover = document.getElementById('startover-btn')
@@ -15,11 +14,7 @@ async function flip() {
     /*Retrieve Value of Text Input */
     const originalText = document.getElementById('input').value;
 
-    const openai = new OpenAI({
-        dangerouslyAllowBrowser: true, 
-        apiKey: import.meta.env.VITE_OPENAI_API_KEY
-    })
-
+   
     const spanishCode  = document.getElementById('spanish')
     const frenchCode   = document.getElementById('french')
     const japaneseCode = document.getElementById('japanese')
@@ -39,12 +34,22 @@ async function flip() {
             }
         ]
 
-        const response = await openai.chat.completions.create({
-            model: 'gpt-4o', 
-            messages: messages
-        })
-
-        outPutText.value = response.choices[0].message.content
+        try {
+            const url = "https://polyglot-worker.diokajr.workers.dev"
+            const response = await fetch(url, {
+                method: 'POST', 
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(messages)
+            })
+            const data = await response.json()
+            outPutText.value = data
+        }catch(err){
+            console.error(err.message)
+            outPutText.value= 'Unable to access AI. Please refresh and try again'
+        }
+        //outPutText.value = response.choices[0].message.content
     }
     else if (frenchCode.checked){
 
@@ -58,13 +63,24 @@ async function flip() {
                 content: `${originalText}`
             }
         ]
+        try {
+                const url = "https://polyglot-worker.diokajr.workers.dev"
+                const response = await fetch(url, {
+                    method: 'POST', 
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(messages)
+                })
+                const data = await response.json()
+                outPutText.value = data
+        }catch(err){
+                console.error(err.message)
+                outPutText.value= 'Unable to access AI. Please refresh and try again'
+        }
+      
 
-        const response = await openai.chat.completions.create({
-            model: 'gpt-4o', 
-            messages: messages
-        })
-
-        outPutText.value = response.choices[0].message.content
+        //outPutText.value = response.choices[0].message.content
     }
     else if (japaneseCode.checked){
         const messages = [
@@ -77,13 +93,27 @@ async function flip() {
                 content: `${originalText}`
             }
         ]
+        try {
+            const url = "https://polyglot-worker.diokajr.workers.dev"
+            const response = await fetch(url, {
+                method: 'POST', 
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(messages)
+            })
+            const data = await response.json()
+            if(!response.ok){
+                throw new Error (`Worker Error: ${data.error}`)
+            }
+            outPutText.value = data
+        }catch(err){
+            console.error(err.message)
+            outPutText.value= 'Unable to access AI. Please refresh and try again'
+        }
 
-        const response = await openai.chat.completions.create({
-            model: 'gpt-4o', 
-            messages: messages
-        })
 
-        outPutText.value = response.choices[0].message.content
+        //outPutText.value = response.choices[0].message.content
     }
 
     document.getElementById('input2').value = originalText;
