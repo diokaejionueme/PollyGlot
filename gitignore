@@ -1,2 +1,4 @@
 .env
-g
+node_modules
+dist
+.DS_Store
